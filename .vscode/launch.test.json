@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "shacl-validator",
+                "projectName": "shacl-validator",
+                "workingDirectory": "/home/sumutcan/Desktop/coding/shacl/shacl-java-api/shacl-validator",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "shacl-validator",
+                "projectName": "shacl-validator",
+                "workingDirectory": "/home/sumutcan/Desktop/coding/shacl/shacl-java-api/shacl-validator",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

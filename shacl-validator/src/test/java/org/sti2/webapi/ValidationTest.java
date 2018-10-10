@@ -2,16 +2,22 @@ package org.sti2.webapi;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Form;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.sti2.lib.SHACLGraphsURI;
+
 import static org.junit.Assert.assertEquals;
 
-public class MyResourceTest {
+public class ValidationTest {
 
     private HttpServer server;
     private WebTarget target;
@@ -41,8 +47,13 @@ public class MyResourceTest {
      * Test to see that the message "Got it!" is sent in the response.
      */
     @Test
-    public void testGetIt() {
-        String responseMsg = target.path("myresource").request().get(String.class);
-        assertEquals("Got it!", responseMsg);
+    public void testValidateByURI() {
+        Form form = new Form();
+        form.param("dataGraphUri", "https://raw.githubusercontent.com/semantifyit/sdo-webapi/master/examples/webapi_examples/WebAPI.jsonld");
+        form.param("shapeGraphUri", "https://raw.githubusercontent.com/semantifyit/sdo-webapi/master/webapi.ttl");
+        Entity<Form> entity =  Entity.form(form);
+        
+        String responseMsg = target.path("validations").request().post(entity).readEntity(String.class);
+        System.out.println(responseMsg);
     }
 }
